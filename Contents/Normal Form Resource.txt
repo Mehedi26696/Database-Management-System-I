@@ -1,0 +1,6 @@
+1. https://www.geeksforgeeks.org/dbms/dbms/ 
+2. https://www.geeksforgeeks.org/dbms/allowed-functional-dependencies-fd-in-various-normal-forms-nf/
+3. https://www.geeksforgeeks.org/dbms/normal-forms-in-dbms/
+4. https://www.geeksforgeeks.org/dbms/second-normal-form-2nf/
+5. https://www.geeksforgeeks.org/dbms/third-normal-form-3nf/
+6. https://www.geeksforgeeks.org/dbms/how-to-find-the-highest-normal-form-of-a-relation/

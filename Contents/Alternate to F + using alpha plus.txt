@@ -1,0 +1,72 @@
+       ================================================
+       | Current Relational Schema                    |
+       ================================================
+
+R = (A, B, C)
+
+       ===============================================
+       | Current Functional Dependency Set           |
+       ===============================================
+A -> B
+B -> C
+
+       ==============
+       |     F+     |
+       ==============
+
+Subset of R
+
+1. A		A+  = ABC
+2. AB		AB+ = ABC
+3. AC		AC+ = ABC
+4. B		B+  = BC
+5. BC		BC+ = BC
+6. C		C+  = C
+7. ABC		ABC+= ABC
+ 
+
+  1	A -> A		
+  2	A -> AB		
+  3	A -> AC		
+  4	A -> B		
+  5	A -> BC		
+  6	A -> C		
+  7	A -> ABC	
+
+  8	AB -> A		  
+  9	AB -> AB	
+ 10	AB -> AC	
+ 11	AB -> B		
+ 12	AB -> BC	
+ 13	AB -> C		
+ 14	AB -> ABC	
+
+ 15	AC -> A		
+ 16	AC -> AB	
+ 17	AC -> AC		
+ 18	AC -> B		 
+ 19	AC -> BC	
+ 20	AC -> C		
+ 21	AC -> ABC	
+
+ 22	B -> B		 
+ 23	B -> C		
+ 24	B -> BC		
+
+ 25	BC -> C		
+ 26	BC -> B		
+ 27	BC -> BC	
+
+ 28	C -> C		
+
+ 29	ABC -> A	 
+ 30	ABC -> AB	 
+ 31	ABC -> AC	
+ 32	ABC -> B	 	
+ 33	ABC -> BC	
+ 34	ABC -> C		
+ 35	ABC -> ABC	
+
+Count = 35
+
+ 

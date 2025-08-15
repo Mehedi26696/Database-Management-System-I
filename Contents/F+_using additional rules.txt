@@ -1,0 +1,87 @@
+       ================================================
+       | Current Relational Schema                    |
+       ================================================
+
+R = (A, B, C)
+
+       ===============================================
+       | Current Functional Dependency Set           |
+       ===============================================
+A -> B
+B -> C
+
+       ==============
+       |     F+     |
+       ==============
+
+  1	C -> C		(Trivial)
+
+  2	B -> C		(Given)
+  3	B -> B		(Trivial) 
+  4	B -> BC		(Union of 2 & 3)
+
+  5	BC -> C		(Augmenting C in both sides of 2)
+  6	BC -> B		(Since 5 is established, using reflexivity rule)
+  7	BC -> BC	(Since 5 is established, using reflexivity rule; Trivial or Union of 5 & 6)
+
+  8	A -> C		(Since A -> B and B -> C, so using transitivity rule)
+  9	A -> B		(Given)
+ 10	A -> BC		(Union of 8 & 9)
+ 11	A -> A		(Trivial)
+ 12	A -> AC		(Union of 8 & 11)
+ 13	A -> AB		(Union of 9 & 11)
+ 14	A -> ABC	(Union of 10 & 11)
+
+ 15	AC -> C		(Augmenting C in both sides of 8)
+ 16	AC -> B		(From 9: Ac -> Bc and from 6: BC -> B, using transitivity AC ->B)
+ 17	AC -> BC	(Transitivity of 15 & 16)	
+ 18	AC -> A		(Since 15 is established, Reflexivity rule) 
+ 19	AC -> AC	(Since 15 is established, Reflexivity rule)
+ 20	AC -> AB	(Union of 18 and 16)
+ 21	AC -> ABC	(Union of 20 and 15)
+
+ 22	AB -> C		(Since 8:A -> C,AB -> BC and since 5:BC -> C, using transitivity AB -> C)  
+			(Since 8:A -> C and and since 5:BC -> C, using Psedutransitivity of 8 & 5)
+ 23	AB -> B		(Since 8:A -> C,AB -> BC and 6:BC -> B, using transitivity AB -> B)
+			(Since 8:A -> C and 6: BC -> B, using Psedutransitivity of 8 & 6)
+ 24	AB -> BC	(Union of 22 & 23)
+ 25	AB -> A		(Since 22 is established, using reflexivity rule)
+ 26	AB -> AC	(Union of 25 & 22)
+ 27	AB -> AB	(Trivial)
+ 28	AB -> ABC	(Union of 27 & 22)
+
+ 29	ABC -> C	(Since 23:AB -> B and 5:BC -> C, using pseudotransitivity of 23 & 5) 
+ 30	ABC -> B	(Since 23:AB -> B and 6:BC -> B, using pseudotransitivity of 23 & 6) 
+ 31	ABC -> BC	(Union of 29 and 30)
+ 32	ABC -> A	(Since 29 is established, Reflexivity rule) 	
+ 33	ABC -> AC	(Since 29 is established, Reflexivity rule)
+ 34	ABC -> AB	(Since 29 is established, Reflexivity rule)	
+ 35	ABC -> ABC	(Since 29 is established, Reflexivity rule)
+
+Count = 35
+
+
+R = (A, B, C)
+
+Case 1: A -> B
+
+Count: 25
+
+Case 2: B -> C
+
+Count: 25
+
+Case 3: A -> C
+
+Count: 25
+
+Case 4: A -> B, B -> C, C -> A
+
+Count: 49
+
+Case 4: A -> B, A -> C
+
+Count: 33
+
+
+Courtesy: Ashis 

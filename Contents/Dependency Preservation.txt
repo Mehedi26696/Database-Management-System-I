@@ -1,0 +1,159 @@
+       ================================================
+       | Current Relational Schema                    |
+       ================================================
+
+R = (A, B, C)
+
+       ===============================================
+       | Current Functional Dependency Set           |
+       ===============================================
+A -> B
+B -> C
+
+       ==============
+       |     F+     |
+       ==============
+
+Step1
+
+  1	C -> C		(Trivial)
+
+  2	B -> C		(Non-Trivial)
+  3	B -> B		(Trivial) 
+  4	B -> BC		(Non-Trivial but common attribute)
+
+  5	BC -> C		(Trivial)
+  6	BC -> B		(Trivial)
+  7	BC -> BC	(Trivial)
+
+  8	A -> C		(Non-Trivial)
+  9	A -> B		(Non-Trivial)
+ 10	A -> BC		(Non-Trivial)
+ 11	A -> A		(Trivial)
+ 12	A -> AC		(Non-Trivial but common attribute)
+ 13	A -> AB		(Non-Trivial but common attribute)
+ 14	A -> ABC	(Non-Trivial but common attribute)
+
+ 15	AC -> C		(Trivial)
+ 16	AC -> B		(Non-Trivial)
+ 17	AC -> BC	(Non-Trivial but common attribute)	
+ 18	AC -> A		(Trivial) 
+ 19	AC -> AC	(Trivial)
+ 20	AC -> AB	(Non-Trivial but common attribute)
+ 21	AC -> ABC	(Non-Trivial but common attribute)
+
+ 22	AB -> C		(Non-Trivial)
+ 23	AB -> B		(Non-Trivial but common attribute)
+ 24	AB -> BC	(Non-Trivial but common attribute)
+ 25	AB -> A		(Trivial)
+ 26	AB -> AC	(Non-Trivial but common attribute)
+ 27	AB -> AB	(Trivial)
+ 28	AB -> ABC	(Non-Trivial but common attribute)
+
+ 29	ABC -> C	(Trivial) 
+ 30	ABC -> B	(Trivial) 
+ 31	ABC -> BC	(Trivial)
+ 32	ABC -> A	(Trivial) 	
+ 33	ABC -> AC	(Trivial)
+ 34	ABC -> AB	(Trivial)	
+ 35	ABC -> ABC	(Trivial)
+
+Count = 35
+
+
+Original Schema:
+
+R = (A, B, C)
+
+FDs = {A -> B,
+       B -> C}
+
+Decomposition 1:
+
+R1 = (A, B)
+R2 = (A, C)
+
+i) Restrictions of F to R1:
+
+  3	B -> B		(Trivial) 
+  9	A -> B		(Non-Trivial)
+ 11	A -> A		(Trivial)
+
+ii) Restrictions of F to R2:
+
+  1	C -> C		(Trivial)
+  8	A -> C		(Non-Trivial)
+ 11	A -> A		(Trivial)
+
+So, F prime = {A -> B, A -> c, A -> A, B -> B, C -> C}
+
+Now closure of F prime: 
+
+  1	C -> C		(Trivial)
+
+  2	B -> B		(Trivial) 
+
+  3	BC -> C		(Trivial)
+  4	BC -> B		(Trivial)
+  5	BC -> BC	(Trivial)
+
+  6	A -> C		(Non-Trivial)
+  7	A -> B		(Non-Trivial)
+  8	A -> BC		(Non-Trivial)
+  9	A -> A		(Trivial)
+ 10	A -> AC		(Non-Trivial but common attribute)
+ 11	A -> AB		(Non-Trivial but common attribute)
+ 12	A -> ABC	(Non-Trivial but common attribute)
+
+ 13	AC -> C		(Trivial)
+ 14	AC -> B		(Non-Trivial)
+ 15	AC -> BC	(Non-Trivial but common attribute)	
+ 16	AC -> A		(Trivial) 
+ 17	AC -> AC	(Trivial)
+ 18	AC -> AB	(Non-Trivial but common attribute)
+ 19	AC -> ABC	(Non-Trivial but common attribute)
+
+ 20	AB -> C		(Non-Trivial)
+ 21	AB -> B		(Trivial)
+ 22	AB -> BC	(Non-Trivial but common attribute)
+ 23	AB -> A		(Trivial)
+ 24	AB -> AC	(Non-Trivial but common attribute)
+ 25	AB -> AB	(Trivial)
+ 26	AB -> ABC	(Non-Trivial but common attribute)
+
+ 27	ABC -> C	(Trivial) 
+ 28	ABC -> B	(Trivial) 
+ 29	ABC -> BC	(Trivial)
+ 30	ABC -> A	(Trivial) 	
+ 31	ABC -> AC	(Trivial)
+ 32	ABC -> AB	(Trivial)	
+ 33	ABC -> ABC	(Trivial)
+
+Count = 33
+
+This closure misses following FDs which is in the closure of F (F plus):
+
+  2	B -> C		(Non-Trivial)
+  4	B -> BC		(Non-Trivial but common attribute)
+
+
+Decomposition 2:
+
+R1 = (A, B)
+R2 = (B, C)
+
+i) Restrictions of F to R1:
+
+  3	B -> B		(Trivial) 
+  9	A -> B		(Non-Trivial)
+ 11	A -> A		(Trivial)
+
+ii) Restrictions of F to R2:
+
+  1	C -> C		(Trivial)
+  2	B -> C		(Non-Trivial)
+  3	B -> B		(Trivial) 
+
+So, F prime = {A -> B, B -> c, A -> A, B -> B, C -> C}
+
+Now closure of F prime includes all the FDs of closure of F (F plus) 

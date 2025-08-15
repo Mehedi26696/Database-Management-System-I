@@ -1,0 +1,53 @@
+Customer_schema = (customer_id, customer_street, customer_city)
+Department_schema = (dept_name, building, budget)
+
+customer_id -> customer_street, customer_city
+dept_name -> building, budget
+
+R = (A, B, C)
+
+FD A -> BC
+
+F plus:
+
+  1	C -> C		(Trivial)
+
+  2	B -> B		(Trivial) 
+
+  3	BC -> C		(Trivial)
+  4	BC -> B		(Trivial)
+  5	BC -> BC	(Trivial)
+
+  6	A -> C		(Super key)
+  7	A -> B		(Super key)
+  8	A -> BC		(Super key)
+  9	A -> A		(Trivial,Super key)
+ 10	A -> AC		(Super key)
+ 11	A -> AB		(Super key)
+ 12	A -> ABC	(Super key)
+
+ 13	AC -> C		(Trivial,Super key)
+ 14	AC -> B		(Super key)
+ 15	AC -> BC	(Super key)	
+ 16	AC -> A		(Trivial,Super key) 
+ 17	AC -> AC	(Trivial,Super key)
+ 18	AC -> AB	(Super key)
+ 19	AC -> ABC	(Super key)
+
+ 20	AB -> C		(Super key)
+ 21	AB -> B		(Super key)
+ 22	AB -> BC	(Super key)
+ 23	AB -> A		(Trivial, Super key)
+ 24	AB -> AC	(Super key)
+ 25	AB -> AB	(Trivial, Super key)
+ 26	AB -> ABC	(Super key)
+
+ 27	ABC -> C	(Trivial,Super key) 
+ 28	ABC -> B	(Trivial,Super key) 
+ 29	ABC -> BC	(Trivial,Super key)
+ 30	ABC -> A	(Trivial,Super key) 	
+ 31	ABC -> AC	(Trivial,Super key)
+ 32	ABC -> AB	(Trivial,Super key)	
+ 33	ABC -> ABC	(Trivial,Super key)
+
+Count = 33

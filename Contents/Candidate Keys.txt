@@ -1,0 +1,8 @@
+I: R = (A, B, C, D, E) 
+{ C -> A, 
+  CE -> B, 
+  CD -> E, 
+  B -> C, 
+  B -> D}
+
+I:  B, CD, CE
